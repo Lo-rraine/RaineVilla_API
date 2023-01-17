@@ -8,6 +8,9 @@ namespace RaineVilla_VillaApi.Models.Dto
         [Required]
         [MaxLength(30)]
         public string Name { get; set; }
+        public int Occupancy { get; set; }
+        public int SquareFeet { get; set; }
+
         public DateTime CreatedDate { get; set; }
     }
 }

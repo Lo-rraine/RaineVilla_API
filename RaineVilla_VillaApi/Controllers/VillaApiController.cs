@@ -40,7 +40,7 @@ namespace RaineVilla_VillaApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<VillaDTO> CreateVilla([FromBody] VillaDTO villaDTO)
         {
-            if (VillaStore.villaList.FirstOrDefault(u => u.Name.ToLower() == villaDTO.Name.ToLower())!=null)
+            if (VillaStore.villaList.FirstOrDefault(u => u.Name.ToLower() == villaDTO.Name.ToLower()) != null)
             {
                 ModelState.AddModelError("VillaNameError", "Villa Name already exists");
                 return BadRequest(ModelState);
@@ -76,6 +76,25 @@ namespace RaineVilla_VillaApi.Controllers
             VillaStore.villaList.Remove(villa);
             return NoContent();
         }
+
+        [HttpPut("{id:int}", Name = "UpdateVilla")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateVilla(int id, [FromBody] VillaDTO villaDTO)
+        {
+            if (villaDTO == null || id != villaDTO.Id)
+            {
+                return BadRequest();
+            }
+            var villa = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
+            villa.Name = villaDTO.Name;
+            villa.SquareFeet = villaDTO.SquareFeet;
+            villa.Occupancy = villaDTO.Occupancy;
+
+            return NoContent();
+        }
+
+
 
     }
 }
