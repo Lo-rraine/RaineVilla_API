@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using RaineVilla_VillaApi.Data;
+using RaineVilla_VillaApi.Logging;
 using RaineVilla_VillaApi.Models;
 using RaineVilla_VillaApi.Models.Dto;
 
@@ -10,12 +11,21 @@ namespace RaineVilla_VillaApi.Controllers
     [ApiController]
     public class VillaApiController : ControllerBase
     {
-        [HttpGet]
+        private readonly ILogging _logger;
+        //Adding Loggers
+        public VillaApiController(ILogging logger)
+        {
+            _logger = logger;
+        }   
+      
+    [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
+            _logger.Log("Getting all villas", " ");
             return Ok(VillaStore.villaList);
         }
+
 
         [HttpGet("{id:int}", Name = "GetVilla")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -25,6 +35,7 @@ namespace RaineVilla_VillaApi.Controllers
         {
             if (id == 0)
             {
+                _logger.Log("Getting Villa error with Id " + id, "error");
                 return BadRequest();
             }
             var villa = VillaStore.villaList.FirstOrDefault(u => u.Id == id);
