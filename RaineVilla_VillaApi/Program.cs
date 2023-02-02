@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using RaineVilla_VillaApi;
 using RaineVilla_VillaApi.Data;
 using RaineVilla_VillaApi.Logging;
+using RaineVilla_VillaApi.Repository;
+using RaineVilla_VillaApi.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ builder.Services.AddControllers(option =>
 {
     //option.ReturnHttpNotAcceptable = true;
 }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
+builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
