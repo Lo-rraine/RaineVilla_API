@@ -6,4 +6,4 @@
   
   - still some errors
 - some updates
-- I am back baby
+- auto map error
