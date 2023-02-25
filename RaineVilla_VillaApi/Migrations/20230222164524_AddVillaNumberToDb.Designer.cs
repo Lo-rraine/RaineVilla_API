@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RaineVilla_VillaApi.Data;
 
@@ -11,9 +12,11 @@ using RaineVilla_VillaApi.Data;
 namespace RaineVillaVillaApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230222164524_AddVillaNumberToDb")]
+    partial class AddVillaNumberToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +73,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 1,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 2, 25, 11, 25, 40, 980, DateTimeKind.Local).AddTicks(7724),
+                            CreatedDate = new DateTime(2023, 2, 22, 18, 45, 24, 193, DateTimeKind.Local).AddTicks(4531),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Name = "Royal Villa",
@@ -83,7 +86,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 2,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 2, 25, 11, 25, 40, 980, DateTimeKind.Local).AddTicks(7739),
+                            CreatedDate = new DateTime(2023, 2, 22, 18, 45, 24, 193, DateTimeKind.Local).AddTicks(4545),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHJlc29ydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
                             Name = "Royal Villa",
@@ -96,7 +99,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 3,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 2, 25, 11, 25, 40, 980, DateTimeKind.Local).AddTicks(7741),
+                            CreatedDate = new DateTime(2023, 2, 22, 18, 45, 24, 193, DateTimeKind.Local).AddTicks(4546),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Name = "Uvongo Villa",
@@ -109,7 +112,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 4,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 2, 25, 11, 25, 40, 980, DateTimeKind.Local).AddTicks(7744),
+                            CreatedDate = new DateTime(2023, 2, 22, 18, 45, 24, 193, DateTimeKind.Local).AddTicks(4548),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Name = "Shelly Villa",
@@ -122,7 +125,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 5,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 2, 25, 11, 25, 40, 980, DateTimeKind.Local).AddTicks(7746),
+                            CreatedDate = new DateTime(2023, 2, 22, 18, 45, 24, 193, DateTimeKind.Local).AddTicks(4549),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Name = "Manaba Villa",
@@ -148,25 +151,9 @@ namespace RaineVillaVillaApi.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("VillaID")
-                        .HasColumnType("int");
-
                     b.HasKey("VillaNo");
 
-                    b.HasIndex("VillaID");
-
                     b.ToTable("VillaNumbers");
-                });
-
-            modelBuilder.Entity("RaineVilla_VillaApi.Models.VillaNumber", b =>
-                {
-                    b.HasOne("RaineVilla_VillaApi.Models.Villa", "Villa")
-                        .WithMany()
-                        .HasForeignKey("VillaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }
