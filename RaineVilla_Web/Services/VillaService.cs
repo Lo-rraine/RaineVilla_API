@@ -32,7 +32,7 @@ namespace RaineVilla_Web.Services
             });
         }
 
-        public Task<T> GetAllAync<T>()
+        public Task<T> GetAllAsync<T>()
         {
             return SendAsync<T>(new Models.APIRequest()
             {
@@ -41,7 +41,7 @@ namespace RaineVilla_Web.Services
             });
         }
 
-        public Task<T> GetSync<T>(int id)
+        public Task<T> GetAsync<T>(int id)
         {
             return SendAsync<T>(new Models.APIRequest()
             {
