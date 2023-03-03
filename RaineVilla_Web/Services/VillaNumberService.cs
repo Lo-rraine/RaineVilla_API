@@ -19,7 +19,7 @@ namespace RaineVilla_Web.Services
         {
             return SendAsync<T>(new Models.APIRequest()
             {
-                ApiType = RaineVilla_Utility.SD.ApiType.POST,
+                ApiType = SD.ApiType.POST,
                 Data = dto,
                 Url = villaUrl + "api/VillaNumberApi"
             });
@@ -29,7 +29,7 @@ namespace RaineVilla_Web.Services
         {
             return SendAsync<T>(new Models.APIRequest()
             {
-                ApiType = RaineVilla_Utility.SD.ApiType.DELETE,              
+                ApiType = SD.ApiType.DELETE,              
                 Url = villaUrl + "/api/VillaNumberApi/" + id
             });
         }
@@ -38,7 +38,7 @@ namespace RaineVilla_Web.Services
         {
             return SendAsync<T>(new Models.APIRequest()
             {
-                ApiType = RaineVilla_Utility.SD.ApiType.GET,
+                ApiType = SD.ApiType.GET,
                 Url = villaUrl + "/api/VillaNumberApi"
             });
         }
@@ -47,7 +47,7 @@ namespace RaineVilla_Web.Services
         {
             return SendAsync<T>(new Models.APIRequest()
             {
-                ApiType = RaineVilla_Utility.SD.ApiType.GET,
+                ApiType = SD.ApiType.GET,
                 Url = villaUrl + "/api/VillaNumberApi"
             });
         }
@@ -56,7 +56,7 @@ namespace RaineVilla_Web.Services
         {
             return SendAsync<T>(new Models.APIRequest()
             {
-                ApiType = RaineVilla_Utility.SD.ApiType.PUT,
+                ApiType = SD.ApiType.PUT,
                 Data = dto,
                 Url = villaUrl + "/api/VillaNumberApi/" + dto.VillaNo
             });
