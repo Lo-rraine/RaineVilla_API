@@ -92,12 +92,12 @@ namespace RaineVilla_VillaApi.Controllers
             {
                 if (await _dbVillaNumber.GetAsync(u => u.VillaNo == createDTO.VillaNo) != null)
                 {
-                    ModelState.AddModelError("VillaNameError", "Villa Number Name already exists");
+                    ModelState.AddModelError("ErrorMessages", "Villa Number Name already exists");
                     return BadRequest(ModelState);
                 }
                 if (await _dbVilla.GetAsync(u=>u.Id == createDTO.VillaID) == null)
                 {
-                    ModelState.AddModelError("CustomError", "Villa ID id invalid!");
+                    ModelState.AddModelError("ErrorMessages", "Villa ID id invalid!");
                     return BadRequest(ModelState);
                 }
 
@@ -164,7 +164,7 @@ namespace RaineVilla_VillaApi.Controllers
                 }
                 if (await _dbVilla.GetAsync(u => u.Id == updateDTO.VillaID) == null)
                 {
-                    ModelState.AddModelError("CustomError", "Villa ID does not exist!");
+                    ModelState.AddModelError("ErrorMessages", "Villa ID does not exist!");
                     return BadRequest(ModelState);
                 }
 

@@ -21,7 +21,7 @@ namespace RaineVilla_Web.Services
             {
                 ApiType = SD.ApiType.POST,
                 Data = dto,
-                Url = villaUrl + "api/VillaNumberApi"
+                Url = villaUrl + "/api/VillaNumberApi"
             });
         }
 
