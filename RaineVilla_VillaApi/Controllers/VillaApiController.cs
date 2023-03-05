@@ -9,6 +9,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using RaineVilla_VillaApi.Repository.IRepository;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RaineVilla_VillaApi.Controllers
 {
@@ -29,6 +30,7 @@ namespace RaineVilla_VillaApi.Controllers
 
 
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
@@ -49,6 +51,7 @@ namespace RaineVilla_VillaApi.Controllers
 
 
         [HttpGet("{id:int}", Name = "GetVilla")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -80,6 +83,7 @@ namespace RaineVilla_VillaApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -123,6 +127,7 @@ namespace RaineVilla_VillaApi.Controllers
         }
 
         [HttpDelete("{id:int}", Name = "DeleteVilla")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
