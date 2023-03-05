@@ -17,7 +17,7 @@ namespace RaineVilla_Web.Controllers
         public VillaController(IVillaService villaService, IMapper mapper)
         {
             _villaService = villaService;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> IndexVilla()
@@ -44,8 +44,10 @@ namespace RaineVilla_Web.Controllers
             var response = await _villaService.CreateAsync<APIResponse>(model);
             if (response != null && response.IsSuccess)
             {
-               return RedirectToAction(nameof(IndexVilla));
+                TempData["success"] = "Villa created successfully!";
+                return RedirectToAction(nameof(IndexVilla));
             }
+            TempData["error"] = "Oops! Error encountered";
             return View(model);
         }
 
@@ -64,7 +66,7 @@ namespace RaineVilla_Web.Controllers
             }
 
             return NotFound();
-    
+
         }
 
         [HttpPost]
@@ -74,8 +76,10 @@ namespace RaineVilla_Web.Controllers
             var response = await _villaService.UpdateAsync<APIResponse>(model);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Villa updated successfully!";
                 return RedirectToAction(nameof(IndexVilla));
             }
+            TempData["error"] = "Oops! Error encountered";
             return View(model);
         }
 
@@ -104,8 +108,10 @@ namespace RaineVilla_Web.Controllers
             var response = await _villaService.DeleteAsync<APIResponse>(model.Id);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Villa deleted!";
                 return RedirectToAction(nameof(IndexVilla));
             }
+            TempData["error"] = "Oops! Error encountered";
             return View(model);
         }
     }
