@@ -2,6 +2,7 @@
 using RaineVilla_Utility;
 using RaineVilla_Web.Models;
 using RaineVilla_Web.Services.IServices;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace RaineVilla_Web.Services
@@ -49,6 +50,11 @@ namespace RaineVilla_Web.Services
                 }
 
                 HttpResponseMessage apiResponse = null;
+
+                if (!string.IsNullOrEmpty(apiRequest.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+                }
 
                 apiResponse = await client.SendAsync(message);
 

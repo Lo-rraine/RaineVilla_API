@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RaineVilla_VillaApi.Data;
 
@@ -11,9 +12,11 @@ using RaineVilla_VillaApi.Data;
 namespace RaineVillaVillaApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230309150443_AddIdentityUserTable")]
+    partial class AddIdentityUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,9 +183,6 @@ namespace RaineVillaVillaApi.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -293,7 +293,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 1,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 3, 9, 17, 9, 30, 263, DateTimeKind.Local).AddTicks(6068),
+                            CreatedDate = new DateTime(2023, 3, 9, 17, 4, 43, 771, DateTimeKind.Local).AddTicks(374),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Name = "Royal Villa",
@@ -306,7 +306,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 2,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 3, 9, 17, 9, 30, 263, DateTimeKind.Local).AddTicks(6079),
+                            CreatedDate = new DateTime(2023, 3, 9, 17, 4, 43, 771, DateTimeKind.Local).AddTicks(385),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
                             Name = "Royal Villa",
@@ -319,7 +319,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 3,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 3, 9, 17, 9, 30, 263, DateTimeKind.Local).AddTicks(6081),
+                            CreatedDate = new DateTime(2023, 3, 9, 17, 4, 43, 771, DateTimeKind.Local).AddTicks(387),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Name = "Uvongo Villa",
@@ -332,7 +332,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 4,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 3, 9, 17, 9, 30, 263, DateTimeKind.Local).AddTicks(6082),
+                            CreatedDate = new DateTime(2023, 3, 9, 17, 4, 43, 771, DateTimeKind.Local).AddTicks(388),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1602002418211-9d76470fa71f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
                             Name = "Shelly Villa",
@@ -345,7 +345,7 @@ namespace RaineVillaVillaApi.Migrations
                         {
                             Id = 5,
                             Amenity = "Wifi",
-                            CreatedDate = new DateTime(2023, 3, 9, 17, 9, 30, 263, DateTimeKind.Local).AddTicks(6084),
+                            CreatedDate = new DateTime(2023, 3, 9, 17, 4, 43, 771, DateTimeKind.Local).AddTicks(390),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu velit, faucibus vel turpis in, convallis condimentum massa",
                             ImageUrl = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
                             Name = "Manaba Villa",
